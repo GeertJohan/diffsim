@@ -1,14 +1,11 @@
 
-LATER:
+LATER/IDEA:
  - Design data-file persistency standard
- 
+
+
 TODO:
- - Change DGW3 to make it work on actual and target timespans
- 	- Update nlgnet to conformal's btcnet and implement all values
- 	- Get BigNum calculations in algorithms
- 	- Do bits to diff (decimal human representation) calculation
  - Implement simulator based on timed join/leave of larger miners (not multipool)
- - Implement multipool simulation (based on diff)
+ - Implement multipool simulator (based on diff)
 
 
 DONE:
@@ -17,3 +14,7 @@ DONE:
  - Design algorithm interface
  - Design simulation interface
  - Change dgw3 so it's compatible with algorithm interface
+ - Change DGW3 to make it work on actual and target timespans
+ 	- Update nlgnet to conformal's btcnet and implement all values
+ 	- Get BigNum calculations in algorithms
+ 	- Do bits to diff (decimal human representation) calculation
