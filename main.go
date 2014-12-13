@@ -107,20 +107,20 @@ func main() {
 			fmt.Println(`
 help       Print this message
 quit       Stop the simulation
-print <n>  Print last n blocks from chain
+last <n>   Print last n blocks from chain
 1          Simulate a single block
 <n>        Simulate n blocks`)
 		case "quit":
 			fmt.Println("Thanks for using diffsim")
 			os.Exit(0)
-		case "print":
+		case "last":
 			n, err := strconv.ParseUint(parts[1], 10, 64)
 			if err != nil {
 				fmt.Printf("Invalid input '%s'.\n", line)
 				continue
 			}
 			if int64(n) > sim.chain.height() {
-				fmt.Printf("Cannot print %d last blocks, chain is only %d high\n", n, sim.chain.height())
+				fmt.Printf("Cannot print last %d blocks, chain is only %d high\n", n, sim.chain.height())
 				continue
 			}
 			var prevBlock *block
