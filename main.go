@@ -19,8 +19,8 @@ func main() {
 	sim := &Simulator{}
 
 	fmt.Println(`Which algorithm should be tested? 
-1) DGW3
-2) GDR`)
+1) DGW3`)
+	// 2) GDR`)
 	for {
 		ans, err := linenoise.Line("> ")
 		if err != nil {
@@ -34,8 +34,8 @@ func main() {
 		switch ans {
 		case "1", "DGW3":
 			sim.algo = NewDarkGravityWave3()
-		case "2", "GDR":
-			sim.algo = NewGuldenDifficultyReadjustment()
+		// case "2", "GDR":
+		// 	sim.algo = NewGuldenDifficultyReadjustment()
 		default:
 			fmt.Printf("Unkown algorithm '%s', please try again\n", ans)
 			continue
