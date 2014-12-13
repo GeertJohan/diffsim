@@ -1,7 +1,7 @@
 
 ## diffsim
 
-diffsim is a program that simulates a bitcoin network. It's main purpose is to test existing difficulty algorithms and assist in developing a new algorithm.
+diffsim is a program that simulates a bitcoin network. Its main purpose is to test existing difficulty algorithms and assist in developing a new algorithm.
 
 ### Install
 
