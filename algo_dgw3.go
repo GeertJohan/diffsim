@@ -29,6 +29,7 @@ func (dgw *DarkGravityWave3) Calculate(chain *chain) *big.Int {
 
 	curHeight := chain.height()
 	if curHeight < pastBlocksMin {
+		verbosef("DGW3 requires %d blocks beofre calculations, returning diff limit (%.10f)\n", pastBlocksMin, DiffToHumanFloat64(powDiffLimit))
 		return (&big.Int{}).Set(powDiffLimit)
 	}
 

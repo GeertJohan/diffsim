@@ -76,5 +76,17 @@ block 1204
 	difficulty:                1801263199947073992204610835070877071294746243320012125156996004921323
 ```
 
+
+#### Export
+
+What is in the exported csv file;
+ - block ID
+ - difficulty compacted bits??
+ - difficulty human representation (e.g. 712.03)
+ - seconds since previous block
+ - time since previous block (human representation e.g. `1m 30s`)
+ - full timestamp
+
+
 ### License
 This project is licensed under a Simplified BSD license. Please read the [LICENSE file][license].

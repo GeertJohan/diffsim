@@ -105,18 +105,24 @@ func main() {
 		switch cmd {
 		case "help":
 			fmt.Println(`
-help       Print this message
-quit       Stop the simulation
-last <n>   Print last n blocks from chain
-1          Simulate a single block
-<n>        Simulate n blocks`)
+help           Print this message
+quit           Stop the simulation
+1              Simulate a single block
+<n>            Simulate n blocks
+d <duration>   Simulate blocks until <duration> has passed
+print <n>      Print last n blocks from chain
+export <file>  Export chain information to given filename`)
 		case "quit":
 			fmt.Println("Thanks for using diffsim")
 			os.Exit(0)
-		case "last":
+		case "print":
+			if len(parts) != 2 {
+				fmt.Println("print command expects one argument: number of lines to print")
+				continue
+			}
 			n, err := strconv.ParseUint(parts[1], 10, 64)
 			if err != nil {
-				fmt.Printf("Invalid input '%s'.\n", line)
+				fmt.Printf("Invalid argument '%s', expecting a number.\n", line)
 				continue
 			}
 			if int64(n) > sim.chain.height() {
@@ -137,6 +143,33 @@ last <n>   Print last n blocks from chain
 	difficulty representation: %.03f
 `, i, block.time.Format(`2006-01-02 15:04:05`), timediff.String(), block.diff.String(), DiffToHumanFloat64(block.diff))
 				prevBlock = block
+			}
+		case "export":
+			if len(parts) != 2 {
+				fmt.Println("export command expects one argument: filename")
+				continue
+			}
+			export(sim, parts[1])
+		case "d":
+			if len(parts) != 2 {
+				fmt.Println("d command expects duration (how long should we simulate")
+				continue
+			}
+			dStr := strings.Join(parts[1:], " ")
+			d, err := time.ParseDuration(dStr)
+			if err != nil {
+				fmt.Printf("error parsing duration format: %v\n", err)
+				continue
+			}
+			until := time.Now().Add(d)
+			var count = 0
+			for {
+				if until.Before(time.Now()) {
+					fmt.Printf("duration `%s` has passed, simulated %d blocks\n", dStr, count)
+					break
+				}
+				sim.SimulateBlocks(1)
+				count++
 			}
 		default:
 			n, err := strconv.ParseUint(line, 10, 64)

@@ -4,6 +4,8 @@ LATER/IDEA:
 
 
 TODO:
+ - Input manual times
+ - Import existing chain data (e.g. last 100 blocks, enough for most simulators)
  - Implement simulator based on timed join/leave of larger miners (not multipool)
  - Implement multipool simulator (based on diff)
 
@@ -18,3 +20,5 @@ DONE:
  	- Update nlgnet to conformal's btcnet and implement all values
  	- Get BigNum calculations in algorithms
  	- Do bits to diff (decimal human representation) calculation
+ - Export chain results to csv
+ 
